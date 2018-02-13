@@ -1,0 +1,41 @@
+#____    _    ____ _____ _   _    _    ____ _____
+#/ ___|  / \  |  _ \_   _| | | |  / \  / ___| ____|
+#| |     / _ \ | |_) || | | |_| | / _ \| |  _|  _|
+#| |___ / ___ \|  _ < | | |  _  |/ ___ \ |_| | |___
+#\____/_/   \_\_| \_\|_| |_| |_/_/   \_\____|_____|
+
+
+# Created by Niyazi Tanyeri on 13/2/18.
+# Copyright © 2018 Niyazi Tanyeri. All rights reserved.
+
+# Alamofire
+# https://github.com/Alamofire/Alamofire
+github "Alamofire/Alamofire" ~> 4.5
+
+# AlamofireNetworkActivityIndicator
+# https://github.com/Alamofire/AlamofireNetworkActivityIndicator
+github "Alamofire/AlamofireNetworkActivityIndicator" ~> 2.2
+
+# SwiftyJSON
+# https://github.com/SwiftyJSON/SwiftyJSON
+github "SwiftyJSON/SwiftyJSON"
+
+# Kingfisher
+# https://github.com/onevcat/Kingfisher
+github "onevcat/Kingfisher" ~> 4.0
+
+# Chameleon
+# https://github.com/ViccAlexander/Chameleon
+github "ViccAlexander/Chameleon"
+
+# APESuperHUD
+# https://github.com/apegroup/APESuperHUD
+github "apegroup/APESuperHUD"
+
+# EasyPeasy
+# https://github.com/nakiostudio/EasyPeasy
+github "nakiostudio/EasyPeasy"
+
+# SnapKit
+# https://github.com/SnapKit/SnapKit
+github "SnapKit/SnapKit" ~> 4.0.0
