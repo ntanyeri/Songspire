@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cyR-av-t7M">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Authentication View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="AuthenticationViewController" customModule="bloomind" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="M7I-qa-brK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="478" y="96"/>
+        </scene>
+        <!--Empty Data Set Delegate-->
+        <scene sceneID="EKl-wR-XmN">
+            <objects>
+                <viewController storyboardIdentifier="TopArtistsViewController" id="zq2-tE-V6y" customClass="TopArtistsViewController" customModule="bloomind" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DxQ-AU-k5H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="176" estimatedRowHeight="176" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="n9O-cv-rRc">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="zq2-tE-V6y" id="RT3-lm-lGJ"/>
+                                    <outlet property="delegate" destination="zq2-tE-V6y" id="aRX-08-8ff"/>
+                                    <outlet property="emptyDataSetDelegate" destination="zq2-tE-V6y" id="NIA-9L-bja"/>
+                                    <outlet property="emptyDataSetSource" destination="zq2-tE-V6y" id="Tjh-wK-5gt"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="n9O-cv-rRc" firstAttribute="leading" secondItem="DxQ-AU-k5H" secondAttribute="leading" id="4dX-M6-cx8"/>
+                            <constraint firstItem="n9O-cv-rRc" firstAttribute="top" secondItem="F4o-F7-XuY" secondAttribute="top" id="Wtw-Um-p8S"/>
+                            <constraint firstAttribute="trailing" secondItem="n9O-cv-rRc" secondAttribute="trailing" id="m99-Xb-hsp"/>
+                            <constraint firstItem="n9O-cv-rRc" firstAttribute="bottom" secondItem="F4o-F7-XuY" secondAttribute="bottom" id="qO3-Kb-ewh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="F4o-F7-XuY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Top Artists" largeTitleDisplayMode="always" id="r9C-aZ-nr9"/>
+                    <connections>
+                        <outlet property="tableView" destination="n9O-cv-rRc" id="QFF-0a-EXf"/>
+                        <segue destination="R83-3R-eF6" kind="show" identifier="ArtistDetailViewController" id="xDa-WZ-Rh7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Aa-YA-saj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1228" y="1620"/>
+        </scene>
+        <!--Top Tracks-->
+        <scene sceneID="77s-1e-6bU">
+            <objects>
+                <viewController id="kx3-Wc-xKr" customClass="TopTracksViewController" customModule="bloomind" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5g7-5c-Ha3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="fMU-11-m6n"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Top Tracks" id="n5u-zd-IQO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HHI-c6-up4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1918" y="1620"/>
+        </scene>
+        <!--Artist Detail View Controller-->
+        <scene sceneID="ShS-R8-n2o">
+            <objects>
+                <viewController id="R83-3R-eF6" customClass="ArtistDetailViewController" customModule="bloomind" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hqn-qk-ydM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKN-IT-q2K">
+                                <rect key="frame" x="158" y="211" width="69" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="back_button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="dFL-0m-G6v"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rTr-2l-bSf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1228" y="2328.4857571214393"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="sMP-fC-5zH">
+            <objects>
+                <tabBarController storyboardIdentifier="TabBarController" id="KAC-5J-Vnx" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bYY-Cd-jAm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="bD1-bp-1sd" kind="relationship" relationship="viewControllers" id="9Dc-CX-oXS"/>
+                        <segue destination="vSX-eF-SHN" kind="relationship" relationship="viewControllers" id="0r0-Rh-VWh"/>
+                        <segue destination="IWv-eg-80Z" kind="relationship" relationship="viewControllers" id="dov-my-vSh"/>
+                        <segue destination="jC5-oI-z2B" kind="relationship" relationship="viewControllers" id="wQz-o1-CZU"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FH8-f8-deD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2281" y="96"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZoV-Es-KRe">
+            <objects>
+                <navigationController storyboardIdentifier="MainNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="cyR-av-t7M" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2sN-O3-xCi">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="lff-O8-s4e"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ce-oi-3gJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-212" y="96"/>
+        </scene>
+        <!--Top Artist-->
+        <scene sceneID="ltQ-pR-GYj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bD1-bp-1sd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Top Artist" image="artist" id="dFT-LS-Dzq"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sQx-Vj-FFW">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zq2-tE-V6y" kind="relationship" relationship="rootViewController" id="JtC-ay-rj7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZZ6-5C-e4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1228" y="914"/>
+        </scene>
+        <!--Top Tracks-->
+        <scene sceneID="hJE-9Q-tft">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vSX-eF-SHN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Top Tracks" image="track" id="xsK-yJ-wtQ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6V0-tY-ekP">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kx3-Wc-xKr" kind="relationship" relationship="rootViewController" id="qRE-rp-HBQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lsN-3r-mHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1918" y="915"/>
+        </scene>
+        <!--More View Controller-->
+        <scene sceneID="XMR-lg-UIW">
+            <objects>
+                <viewController id="5yB-I6-1oc" customClass="MoreViewController" customModule="bloomind" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GmB-9f-skH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="YVI-Cs-nxU"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="YS2-Fb-tlg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SiC-Dy-jDl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2612" y="1620"/>
+        </scene>
+        <!--Music Player View Controller-->
+        <scene sceneID="SAR-9f-CJx">
+            <objects>
+                <viewController storyboardIdentifier="MusicPlayerViewController" id="Ks0-yd-5Bm" customClass="MusicPlayerViewController" customModule="bloomind" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4QM-HX-bDa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="e6J-HC-Inl"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OMb-Ie-v63" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4432.8000000000002" y="879.31034482758628"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hXL-Z1-lNc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jC5-oI-z2B" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="more" id="GlZ-2I-ntJ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2r5-Vj-Rcw">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5yB-I6-1oc" kind="relationship" relationship="rootViewController" id="1Db-T2-qud"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MQf-iJ-umr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2612" y="916"/>
+        </scene>
+        <!--Top Genres-->
+        <scene sceneID="kgb-Si-irb">
+            <objects>
+                <viewController id="C7r-BO-5c8" customClass="TopGenresViewController" customModule="bloomind" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LPU-4W-oUb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="eFy-NS-o4e"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Top Genres" id="OPw-Ab-ipO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1O4-kg-AXA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3302" y="1620"/>
+        </scene>
+        <!--Top Genres-->
+        <scene sceneID="RzC-tf-Fq5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IWv-eg-80Z" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Top Genres" image="genre_icon" id="Gsr-1m-W87"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YUf-fS-pCP">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="C7r-BO-5c8" kind="relationship" relationship="rootViewController" id="SmZ-He-pTp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8cM-NC-Qw1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3302" y="913"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="artist" width="37" height="37"/>
+        <image name="back_button" width="15" height="27"/>
+        <image name="genre_icon" width="37" height="37"/>
+        <image name="track" width="37" height="37"/>
+    </resources>
+</document>
