@@ -32,10 +32,18 @@ github "ViccAlexander/Chameleon"
 # https://github.com/apegroup/APESuperHUD
 github "apegroup/APESuperHUD"
 
-# EasyPeasy
-# https://github.com/nakiostudio/EasyPeasy
-github "nakiostudio/EasyPeasy"
-
 # SnapKit
 # https://github.com/SnapKit/SnapKit
 github "SnapKit/SnapKit" ~> 4.0.0
+
+# DZNEmptyDataSet
+# https://github.com/dzenbot/DZNEmptyDataSet
+github "dzenbot/DZNEmptyDataSet"
+
+# LNPopupController
+# https://github.com/LeoNatan/LNPopupController
+github "LeoNatan/LNPopupController"
+
+# Magnetic
+# https://github.com/efremidze/Magnetic
+github "efremidze/Magnetic"
