@@ -38,8 +38,8 @@ class TopTracksViewModal {
         
         topTrackData = [0: [Track](), 1: [Track](), 2: [Track]()]
         sectionInfos.append(SectionInfo(title: "THIS MONTH", isVisible: false))
-        sectionInfos.append(SectionInfo(title: "THIS MONTH", isVisible: false))
-        sectionInfos.append(SectionInfo(title: "THIS MONTH", isVisible: false))
+        sectionInfos.append(SectionInfo(title: "THIS YEAR", isVisible: false))
+        sectionInfos.append(SectionInfo(title: "ALL TIME", isVisible: false))
     }
     
     func getLongTermTopTracks() {

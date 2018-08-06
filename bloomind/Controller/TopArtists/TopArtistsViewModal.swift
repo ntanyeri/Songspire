@@ -38,8 +38,8 @@ class TopArtistsViewModal {
         
         topArtistData = [0: [Artist](), 1: [Artist](), 2: [Artist]()]
         sectionInfos.append(SectionInfo(title: "THIS MONTH", isVisible: false))
-        sectionInfos.append(SectionInfo(title: "THIS MONTH", isVisible: false))
-        sectionInfos.append(SectionInfo(title: "THIS MONTH", isVisible: false))
+        sectionInfos.append(SectionInfo(title: "THIS YEAR", isVisible: false))
+        sectionInfos.append(SectionInfo(title: "ALL TIME", isVisible: false))
     }
     
     func getLongTermTopArtist() {
