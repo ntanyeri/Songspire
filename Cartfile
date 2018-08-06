@@ -14,7 +14,7 @@ github "Alamofire/Alamofire" ~> 4.5
 
 # AlamofireNetworkActivityIndicator
 # https://github.com/Alamofire/AlamofireNetworkActivityIndicator
-github "Alamofire/AlamofireNetworkActivityIndicator" ~> 2.2
+# github "Alamofire/AlamofireNetworkActivityIndicator" ~> 2.2
 
 # SwiftyJSON
 # https://github.com/SwiftyJSON/SwiftyJSON
@@ -47,3 +47,5 @@ github "LeoNatan/LNPopupController"
 # Magnetic
 # https://github.com/efremidze/Magnetic
 github "efremidze/Magnetic"
+
+github "ninjaprox/NVActivityIndicatorView"

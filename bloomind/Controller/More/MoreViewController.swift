@@ -170,7 +170,7 @@ extension MoreViewController {
             })
         }
         alert.addAction(title: "Done", style: .cancel)
-        alert.show()
+        self.present(alert, animated: true, completion: nil)
     }
     
     func showCountryPicker() {
@@ -185,7 +185,7 @@ extension MoreViewController {
             //tableView.reloadRows(at: [IndexPath(row: 0, section: 1)], with: UITableViewRowAnimation.automatic)
         }
         alert.addAction(title: "OK", style: .cancel)
-        alert.show()
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -268,7 +268,7 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
             return "Copyright © 2018 Niyazi Tanyeri. All rights reserved."
         }
         else if section == 0 {
-            return "*top songs of artists ordered by region"
+            return "*Artists' top songs would be ordered by selected region."
         }
         
         return nil
@@ -317,15 +317,18 @@ extension MoreViewController: MoreViewModalDelegate {
     func didSuccessUserInfoRequest() {
         tableView.reloadData()
         
-        let processor = BlurImageProcessor(blurRadius: 4)
-        
-        displayName.text = viewModal.userInfo!.displayName
-        userProfileContainerImageView.kf.setImage(with: viewModal.userInfo!.largestImage.imageURL,
-                                                            placeholder: nil,
-                                                            options: [.processor(processor)],
-                                                            progressBlock: nil,
-                                                            completionHandler: nil)
-        
+        if let user = viewModal.userInfo {
+
+            displayName.text = user.displayName
+            
+            guard let userImage = user.largestImage else { return }
+            let processor = BlurImageProcessor(blurRadius: 4)
+            userProfileContainerImageView.kf.setImage(with: userImage.imageURL,
+                                                      placeholder: nil,
+                                                      options: [.processor(processor)],
+                                                      progressBlock: nil,
+                                                      completionHandler: nil)            
+        }
         
     }
     

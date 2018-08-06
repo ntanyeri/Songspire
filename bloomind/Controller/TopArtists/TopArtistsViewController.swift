@@ -29,9 +29,7 @@ class TopArtistsViewController: UIViewController {
         
         createModal()
         tableViewRegisterCustomCells()
-        
-        
-        
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -69,13 +67,14 @@ class TopArtistsViewController: UIViewController {
 
 }
 
+
 // MARK: - ViewController Extension
 
 extension TopArtistsViewController {
     
     // MARK: Functions
     
-    func createModal() {
+    private func createModal() {
         
         if viewModal == nil {
             viewModal = TopArtistsViewModal(delegate: self)
@@ -131,7 +130,6 @@ extension TopArtistsViewController: UITableViewDelegate, UITableViewDataSource {
         return 0
     }
     
-    
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         let header = view as! UITableViewHeaderFooterView
@@ -172,7 +170,7 @@ extension TopArtistsViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelega
         tableView.contentInset = UIEdgeInsets.zero
         
         return NSAttributedString(
-            string: "Take Us Your Leader",
+            string: "Wubba Lubba Dub Dub",
             attributes: [
                 NSAttributedStringKey.font: UIFont(name: "\(FontFamily.SFUIDisplay.rawValue)-\(FontStyle.Bold.rawValue)", size: 32)!,
                 NSAttributedStringKey.foregroundColor: UIColor.flatGrayColorDark()
@@ -183,7 +181,7 @@ extension TopArtistsViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelega
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         
         return NSAttributedString(
-            string: "Only if you promise to take him back with you",
+            string: "Nobody exists on purpose nobody belongs anywhere everybody's going to die.",
             attributes: [
                 NSAttributedStringKey.font: UIFont(name: "\(FontFamily.SFUIDisplay.rawValue)-\(FontStyle.Regular.rawValue)", size: 20)!,
                 NSAttributedStringKey.foregroundColor: UIColor.flatGray()
@@ -231,11 +229,12 @@ extension TopArtistsViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         for cell in self.tableView.visibleCells as! [TopArtistTableViewCell] {
-            let x = cell.artistImageView.frame.origin.x
             let w = cell.artistImageView.bounds.width
             let h = cell.artistImageView.bounds.height
+            let x = cell.artistImageView.frame.origin.x
             let y = ((tableView.contentOffset.y - cell.frame.origin.y) / h) * 25
             cell.artistImageView.frame = CGRect(x: x, y: y, width: w, height: h)
+
         }
 
         self.view.layoutIfNeeded()

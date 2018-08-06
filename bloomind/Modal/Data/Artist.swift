@@ -26,9 +26,9 @@ struct Artist {
         self.externalURL    = data["external_urls"]["spotify"].url
         self.followersCount = data["followers"]["total"].intValue
         
-        
         guard let images = data["images"].array else { return }
-        self.image = images[0]["url"].url
+        guard let firstImage = images.first else { return }
+        self.image = firstImage["url"].url
         
         if let genres = data["genres"].array {
             self.genres = [Genre]()
@@ -36,7 +36,6 @@ struct Artist {
                 self.genres!.append(Genre(name: genre.stringValue, raputation: 1))
             }
         }
-        
     }
     
 }

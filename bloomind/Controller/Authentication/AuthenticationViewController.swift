@@ -11,7 +11,7 @@ import SafariServices
 import SnapKit
 import Chameleon
 
-class AuthenticationViewController: UIViewController, SPTAudioStreamingDelegate {
+class AuthenticationViewController: UIViewController {
 
     // MARK: Variables
     
@@ -41,7 +41,7 @@ class AuthenticationViewController: UIViewController, SPTAudioStreamingDelegate 
     }()
     
     lazy var titleLabel: UILabel = {
-        let label             = UILabel(frame: CGRect.zero)
+        let label  = UILabel(frame: CGRect.zero)
         
         label.text                      = "You are what you stream"
         label.textAlignment             = NSTextAlignment.center
@@ -53,7 +53,7 @@ class AuthenticationViewController: UIViewController, SPTAudioStreamingDelegate 
     }()
     
     lazy var messageLabel: UILabel = {
-        let label             = UILabel(frame: CGRect.zero)
+        let label = UILabel(frame: CGRect.zero)
         
         label.text                      = "Visualize your most listened artists and tracks on Spotify"
         label.textAlignment             = NSTextAlignment.center
@@ -71,7 +71,7 @@ class AuthenticationViewController: UIViewController, SPTAudioStreamingDelegate 
         super.viewDidLoad()
         
         setup()
-
+        layout()
     }
 
     override func didReceiveMemoryWarning() {
@@ -91,10 +91,24 @@ class AuthenticationViewController: UIViewController, SPTAudioStreamingDelegate 
         // Show the navigation bar on other view controllers
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+
+    /*
+    // MARK: Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
+
+extension AuthenticationViewController {
     
     // MARK: Setup
     
-    func setup() {
+    private func setup() {
         
         view.backgroundColor = HexColor("F4B93E")
         
@@ -102,55 +116,66 @@ class AuthenticationViewController: UIViewController, SPTAudioStreamingDelegate 
         view.addSubview(pageIcon)
         view.addSubview(titleLabel)
         view.addSubview(messageLabel)
-        layout()
     }
     
-    func layout() {
+    private func layout() {
         
         pageIcon.snp.makeConstraints { (make) in
+            make.top.lessThanOrEqualTo(96)
             make.width.height.equalTo(175)
-            make.top.equalTo(96)
-            make.left.equalTo(120)
-            make.right.equalTo(-119)
-            make.bottom.equalTo(titleLabel.snp.top).offset(-95)
+            make.centerX.equalTo(view)
         }
         
         titleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(pageIcon.snp.bottom).offset(95)
+            make.top.lessThanOrEqualTo(pageIcon.snp.bottom).offset(30)
             make.left.equalTo(30)
-            make.right.equalTo(-29)
-            make.bottom.equalTo(messageLabel.snp.top).offset(-15)
+            make.right.equalTo(-30)
         }
         
         messageLabel.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom).offset(15)
             make.left.equalTo(90)
-            make.right.equalTo(-89)
-            make.height.equalTo(72)
-            //make.bottom.equalTo(signinButton.snp.top).offset(-123)
+            make.right.equalTo(-90)
         }
         
         signinButton.snp.makeConstraints { (make) in
-            //make.top.equalTo(messageLabel.snp.bottom).offset(123)
+            make.top.greaterThanOrEqualTo(messageLabel.snp.bottom).offset(15)
             make.left.equalTo(36)
+            make.right.equalTo(-36)
             make.height.equalTo(50)
-            make.right.equalTo(-35)
-            make.bottom.equalTo(-125)
+            make.bottom.lessThanOrEqualTo(-96)
         }
     }
     
-    // MARK: Functions
+    // MARK: Actions
     
-    @objc func receievedUrlFromSpotify(_ notification: Notification) {
+    @objc func spotifySigninAction(_ sender: UIButton) {
+        
+        // Before presenting the view controllers we are going to start watching for the notification
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.receievedUrlFromSpotifyAction(_ :)),
+                                               name: NSNotification.Name.Spotify.authURLOpened,
+                                               object: nil)
+
+        //Check to see if the user has Spotify installed
+        if SPTAuth.supportsApplicationAuthentication() {
+            //Open the Spotify app by opening its url
+            UIApplication.shared.open(Spotify().appURL, options: [:], completionHandler: nil)
+        } else {
+            //Present a web browser in the app that lets the user sign in to Spotify
+            safariViewController = SFSafariViewController(url: Spotify().webURL)
+            present(safariViewController, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func receievedUrlFromSpotifyAction(_ notification: Notification) {
         
         guard let url = notification.object as? URL else { return }
-        
         
         // Close the web view if it exists
         if safariViewController != nil {
             safariViewController.dismiss(animated: true, completion: nil)
         }
-        
         
         // Remove the observer from the Notification Center
         NotificationCenter.default.removeObserver(self,
@@ -172,18 +197,10 @@ class AuthenticationViewController: UIViewController, SPTAudioStreamingDelegate 
                 userDefaults.set(sessionData, forKey: "SpotifySession")
                 userDefaults.synchronize()
                 
-                // The streaming login is asyncronious and will alert us if the user
-                // was logged in through a delegate, so we need to implement those methods
-                
-                SPTAudioStreamingController.sharedInstance().delegate = self
-                SPTAudioStreamingController.sharedInstance().login(withAccessToken: session.accessToken)
-                
                 Router.pushHomeViewController(target: self)
-
+                
             }
         }
-        
-        
     }
     
     func displayErrorMessage(error: Error) {
@@ -202,48 +219,4 @@ class AuthenticationViewController: UIViewController, SPTAudioStreamingDelegate 
             self.present(alertController, animated: true, completion: nil)
         }
     }
-    
-    func successfulLogin() {
-        // When changing the UI, all actions must be done on the main thread,
-        // since this can be called from a notification which doesn't run on
-        // the main thread, we must add this code to the main thread's queue
-        
-        DispatchQueue.main.async {
-            // Present next view controller or use performSegue(withIdentifier:, sender:)
-            //self.present(MainViewController(), animated: true, completion: nil)
-        }
-    }
-    
-    // MARK: Actions
-    
-    @objc func spotifySigninAction(_ sender: UIButton) {
-        
-        // Before presenting the view controllers we are going to start watching for the notification
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.receievedUrlFromSpotify(_ :)),
-                                               name: NSNotification.Name.Spotify.authURLOpened,
-                                               object: nil)
-        
-        //Check to see if the user has Spotify installed
-        if SPTAuth.supportsApplicationAuthentication() {
-            //Open the Spotify app by opening its url
-            UIApplication.shared.open(Spotify().appURL, options: [:], completionHandler: nil)
-        } else {
-            //Present a web browser in the app that lets the user sign in to Spotify
-            safariViewController = SFSafariViewController(url: Spotify().webURL)
-            present(safariViewController, animated: true, completion: nil)
-        }
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -49,7 +49,7 @@ class ArtistDetailViewController: MainViewController {
         button.tintColor = UIColor.white
         button.contentVerticalAlignment = .top
         button.contentHorizontalAlignment = .left
-        button.addTarget(self, action: #selector(self.returnBack(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(self.returnBackAction(_:)), for: .touchUpInside)
         return button
     }()
 
@@ -104,7 +104,7 @@ extension ArtistDetailViewController {
     
     // MARK: Setup
     
-    func setup() {
+    private func setup() {
         
         AppEngine.addImageOverlay(frame: artistImageView.frame, alpha: 0.2, toView: artistImageView)
         
@@ -116,10 +116,10 @@ extension ArtistDetailViewController {
         layout()
     }
     
-    func layout() {
+    private func layout() {
         
         backButton.snp.makeConstraints { (make) in
-            make.top.equalTo(30)
+            make.top.equalTo(40)
             make.left.equalTo(15)
             make.height.equalTo(50)
             make.width.equalTo(100)
@@ -146,11 +146,7 @@ extension ArtistDetailViewController {
     
     // MARK: Actions
     
-    @IBAction func cancelAction(_ sender: AnyObject) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @objc func returnBack(_ sender: UIButton) {
+    @objc func returnBackAction(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
 }
@@ -224,7 +220,4 @@ extension ArtistDetailViewController: ArtistDetailViewModalDeletage {
         
         
     }
-    
-    
-    
 }

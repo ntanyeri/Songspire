@@ -7,6 +7,8 @@
 //
 
 import UIKit
+//import Firebase
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupSpotify()
         checkSpotifySession()
         AppEngine.setUIElementsAppearances()
+        
+        //NetworkActivityIndicatorManager.shared.isEnabled = true
+        FirebaseApp.configure()
         
         return true
     }
@@ -89,34 +94,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window!.rootViewController = tabBarController
             }
         }
-        
-        
-        
-//        if let auth = SPTAuth.defaultInstance() {
-//            if let session = auth.session {
-//                if session.isValid() {
-//                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                    
-//                    let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
-//                    self.window!.rootViewController = tabBarController
-//                }
-//            }
-//        }
-
-        
-//
-//        if SPTAuth.defaultInstance().session.isValid() {
-//
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//
-//            let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
-//            self.window!.rootViewController = tabBarController
-//
-////            let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as!
-////            HomeViewController
-////            let navigationController = UINavigationController(rootViewController: homeViewController)
-////            self.window!.rootViewController = navigationController
-//        }
     }
 
 

@@ -21,7 +21,7 @@ class MoreViewModal {
     let sectionZero = ["Streaming Quality", "Region*"]
     let sectionOne = ["Rate App", "Share App"]
     let sectionTwo = ["Version", "Build"]
-    let sectionThree = ["Sigout"]
+    let sectionThree = ["Sign out"]
     let tableViewData: [Int: [String]]
     let userDefaults = UserDefaults.standard
     

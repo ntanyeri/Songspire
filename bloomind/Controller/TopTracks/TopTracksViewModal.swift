@@ -19,13 +19,11 @@ protocol TopTracksViewModalDelegate {
 
 class TopTracksViewModal {
     
-    let delegate    : TopTracksViewModalDelegate?
-    let spotifyAPI  : Spotify!
+    let delegate: TopTracksViewModalDelegate?
+    private let spotifyAPI: Spotify!
     
-    var longTermTopTracktList   = [Track]()
-    var mediumTermTopTrackList  = [Track]()
-    var shortTermTopTrackList   = [Track]()
-    var sectionInfos            = [SectionInfo]()
+    var topTrackData = [Int: [Track]]()
+    var sectionInfos = [SectionInfo]()
     
     init(delegate: TopTracksViewModalDelegate) {
         
@@ -36,10 +34,12 @@ class TopTracksViewModal {
         prepareSectionInfos()
     }
     
-    func prepareSectionInfos() {
+    private func prepareSectionInfos() {
+        
+        topTrackData = [0: [Track](), 1: [Track](), 2: [Track]()]
         sectionInfos.append(SectionInfo(title: "THIS MONTH", isVisible: false))
-        sectionInfos.append(SectionInfo(title: "THIS MONTH", isVisible: false))
-        sectionInfos.append(SectionInfo(title: "THIS MONTH", isVisible: false))
+        sectionInfos.append(SectionInfo(title: "THIS YEAR", isVisible: false))
+        sectionInfos.append(SectionInfo(title: "ALL TIME", isVisible: false))
     }
     
     func getLongTermTopTracks() {
@@ -71,21 +71,21 @@ extension TopTracksViewModal: SpotifyWebAPIDelegate {
                         
                         switch timeRange {
                         case .longTerm:
-                            longTermTopTracktList.append(track)
+                            topTrackData[2]!.append(track)
                             sectionInfos[2].isVisible = true
                             delegate?.didSuccessGetLongTernTopTrackList()
                         case .mediumTerm:
                             // Eğer medium range request yaparsak, next url içerisinde time range değeri olmuyor.
                             break
                         case .shortTerm:
-                            shortTermTopTrackList.append(track)
+                            topTrackData[0]!.append(track)
                             sectionInfos[0].isVisible = true
                             delegate?.didSuccessGetShortTernTopTrackList()
                         case .none:
                             break
                         }
                     } else {
-                        mediumTermTopTrackList.append(track)
+                        topTrackData[1]!.append(track)
                         sectionInfos[1].isVisible = true
                         delegate?.didSuccessGetMediumTernTopTrackList()
                     }

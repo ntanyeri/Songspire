@@ -17,4 +17,8 @@ class Genre {
         self.name       = name
         self.reputaion  = raputation
     }
+    
+    func increaseRaputation(value: Int) {
+        self.reputaion += 1
+    }
 }

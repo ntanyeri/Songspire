@@ -29,21 +29,16 @@ class TopArtistTableViewCell: UITableViewCell {
     }()
     
     lazy var artistImageView: UIImageView = {
-        let imageView               = UIImageView(frame: CGRect.zero)
-        
-        imageView.contentMode       = .scaleAspectFill
-        imageView.layer.cornerRadius = 14
-        
+        let imageView = UIImageView(frame: CGRect.zero)
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
     lazy var containerView: UIView = {
         let view = UIView(frame: CGRect.zero)
         view.backgroundColor = UIColor.clear
-        view.clipsToBounds = true
         view.layer.cornerRadius = 14
         view.layer.masksToBounds = true
-        view.clipsToBounds = true
         return view
     }()
     
@@ -102,9 +97,7 @@ class TopArtistTableViewCell: UITableViewCell {
             make.right.equalTo(-20)
             make.height.greaterThanOrEqualTo(50)
         }
-        
-        
-        
+
     }
     
     // MARK: Functions
@@ -120,7 +113,7 @@ class TopArtistTableViewCell: UITableViewCell {
     
     func prepareCell(data: Artist) {
         
-        artistImageView.kf.setImage(with: data.image)
+        artistImageView.kf.setImage(with: data.image, placeholder: #imageLiteral(resourceName: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
         artistName.text = data.name
     }
     
@@ -129,7 +122,7 @@ class TopArtistTableViewCell: UITableViewCell {
     private func configureGestureRecognizer() {
         // Long Press Gesture Recognizer
         longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPressGesture(gestureRecognizer:)))
-        longPressGestureRecognizer?.minimumPressDuration = 0.1
+        longPressGestureRecognizer?.minimumPressDuration = 0.5
         addGestureRecognizer(longPressGestureRecognizer!)
     }
     

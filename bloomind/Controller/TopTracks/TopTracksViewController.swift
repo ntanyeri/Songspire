@@ -45,10 +45,6 @@ class TopTracksViewController: MainViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tabBarController?.popupBar.imageView.layer.cornerRadius = 5
-        tabBarController?.popupBar.barTintColor                 = UIColor.flatWhite()
-        navigationController?.popupBar.progressViewStyle        = .bottom
         
         createModal()
         setup()
@@ -72,7 +68,12 @@ class TopTracksViewController: MainViewController {
     
     // MARK: Setup
     
-    func setup() {
+    private func setup() {
+        
+        // LNPopupController appaeriance settings
+        tabBarController?.popupBar.imageView.layer.cornerRadius = 5
+        tabBarController?.popupBar.barTintColor = UIColor.flatWhite()
+        navigationController?.popupBar.progressViewStyle = .bottom
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -84,7 +85,7 @@ class TopTracksViewController: MainViewController {
         layout()
     }
     
-    func layout() {
+    private func layout() {
         
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view)
@@ -93,7 +94,7 @@ class TopTracksViewController: MainViewController {
     
     // MARK: Functions
     
-    func createModal() {
+    private func createModal() {
         
         if viewModal == nil {
             viewModal = TopTracksViewModal(delegate: self)
@@ -129,32 +130,15 @@ extension TopTracksViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        switch section {
-        case 0:
-            return viewModal.shortTermTopTrackList.count
-        case 1:
-            return viewModal.mediumTermTopTrackList.count
-        case 2:
-            return viewModal.longTermTopTracktList.count
-        default:
-            return 0
-        }
+        return viewModal.topTrackData[section]?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopTrackCollectionViewCell", for: indexPath) as! TopTrackCollectionViewCell
         
-        switch indexPath.section {
-        case 0:
-            cell.prepareCell(data: viewModal.shortTermTopTrackList[indexPath.row])
-        case 1:
-            cell.prepareCell(data: viewModal.mediumTermTopTrackList[indexPath.row])
-        case 2:
-            cell.prepareCell(data: viewModal.longTermTopTracktList[indexPath.row])
-        default:
-            return cell
-        }
+        guard let data = viewModal.topTrackData[indexPath.section] else { return cell }
+        cell.prepareCell(data: data[indexPath.row])
 
         return cell
     }
@@ -189,19 +173,11 @@ extension TopTracksViewController: UICollectionViewDelegate, UICollectionViewDat
         
         tabBarController?.presentPopupBar(withContentViewController: popupContentController, animated: true, completion: nil)
         
-        switch indexPath.section {
-        case 0:
-            preparePopupContentController(withTrack: viewModal.shortTermTopTrackList[indexPath.row])
-            playTrack(withID: viewModal.shortTermTopTrackList[indexPath.row].ID)
-        case 1:
-            preparePopupContentController(withTrack: viewModal.mediumTermTopTrackList[indexPath.row])
-            playTrack(withID: viewModal.mediumTermTopTrackList[indexPath.row].ID)
-        case 2:
-            preparePopupContentController(withTrack: viewModal.longTermTopTracktList[indexPath.row])
-            playTrack(withID: viewModal.longTermTopTracktList[indexPath.row].ID)
-        default:
-            break
-        }
+        guard let data = viewModal.topTrackData[indexPath.section] else { return }
+        
+        preparePopupContentController(withTrack: data[indexPath.row])
+        playTrack(withID: data[indexPath.row].ID)
+
     }
     
     
@@ -227,7 +203,7 @@ extension TopTracksViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegat
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         
         return NSAttributedString(
-            string: "Take Us Your Leader",
+            string: "Wubba Lubba Dub Dub",
             attributes: [
                 NSAttributedStringKey.font: UIFont(name: "\(FontFamily.SFUIDisplay.rawValue)-\(FontStyle.Bold.rawValue)", size: 32)!,
                 NSAttributedStringKey.foregroundColor: UIColor.flatGrayColorDark()
@@ -238,7 +214,7 @@ extension TopTracksViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegat
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         
         return NSAttributedString(
-            string: "Only if you promise to take him back with you",
+            string: "Nobody exists on purpose nobody belongs anywhere everybody's going to die.",
             attributes: [
                 NSAttributedStringKey.font: UIFont(name: "\(FontFamily.SFUIDisplay.rawValue)-\(FontStyle.Regular.rawValue)", size: 20)!,
                 NSAttributedStringKey.foregroundColor: UIColor.flatGray()
