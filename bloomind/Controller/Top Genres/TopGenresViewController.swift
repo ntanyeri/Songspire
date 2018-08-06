@@ -18,28 +18,29 @@ class TopGenresViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let tabBarController = self.tabBarController {
-            if let viewControllers = tabBarController.viewControllers {
-                if let first = viewControllers.first {
-                    let navigationController = first as! UINavigationController
-                    let topArtistsViewController = navigationController.viewControllers.first as! TopArtistsViewController
-                    
-                    guard let shortTermTopArtistData = topArtistsViewController.viewModal.topArtistData[0] else { return }
-                    for shortTermList in shortTermTopArtistData{
-                        if let genreList = shortTermList.genres {
-                            for genre in genreList {
-                                if genres.contains(where: { $0.name == genre.name }) {
-                                    genres.filter({ $0.name == genre.name}).first?.reputaion += 1
-                                    // found
-                                } else {
-                                    self.genres.append(genre)
-                                }
-                            }
-                        }
-                    }
+        guard let tabBarController = self.tabBarController else { return }
+        guard let viewControllers = tabBarController.viewControllers else { return }
+        guard let first = viewControllers.first else { return }
+        let navigationController = first as! UINavigationController
+        let topArtistsViewController = navigationController.viewControllers.first as! TopArtistsViewController
+        
+        guard let shortTermTopArtists = topArtistsViewController.viewModal.topArtistData[0] else { return }
+        
+        for artist in shortTermTopArtists {
+            
+            guard let artistGenres = artist.genres else { return }
+            
+            for genre in artistGenres {
+                if genres.contains(where: { $0.name == genre.name }) {
+                    genres.filter({ $0.name == genre.name}).first?.reputaion += 1
+                    // exist genre,
+                } else {
+                    self.genres.append(genre)
                 }
             }
         }
+        
+        
         
         addMagneticView()
         

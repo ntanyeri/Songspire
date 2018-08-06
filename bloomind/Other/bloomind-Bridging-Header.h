@@ -10,3 +10,4 @@
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 
 @import LNPopupController;
+#import "Firebase.h"

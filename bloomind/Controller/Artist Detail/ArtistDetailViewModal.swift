@@ -20,7 +20,7 @@ class ArtistDetailViewModal {
     // MARK: Variables
     
     var delegate: ArtistDetailViewModalDeletage?
-    let spotifyAPI: Spotify!
+    private let spotifyAPI: Spotify!
     
     var artistData: Artist!
     var topTracks = [Track]()
@@ -54,8 +54,7 @@ extension ArtistDetailViewModal: SpotifyWebAPIDelegate {
     func spotifyWebAPIDidRequestSuccess(data: Any, endpoint: Endpoint) {
         
         let jsonObject  = JSON(data)
-        
-        
+
         if let tracks = jsonObject["tracks"].array {
             for track in tracks {
                 topTracks.append(Track(data: track))

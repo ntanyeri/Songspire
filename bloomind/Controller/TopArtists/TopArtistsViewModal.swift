@@ -19,8 +19,8 @@ protocol TopArtistsViewModalDelegate {
 
 class TopArtistsViewModal {
     
-    let delegate    : TopArtistsViewModalDelegate?
-    let spotifyAPI  : Spotify!
+    let delegate: TopArtistsViewModalDelegate?
+    private let spotifyAPI: Spotify!
     
     var topArtistData   = [Int: [Artist]]()
     var sectionInfos    = [SectionInfo]()
@@ -30,12 +30,13 @@ class TopArtistsViewModal {
         self.delegate       = delegate
         spotifyAPI          = Spotify()
         spotifyAPI.delegate = self
-        
-        topArtistData = [0: [Artist](), 1: [Artist](), 2: [Artist]()]
+
         prepareSectionInfos()
     }
     
-    func prepareSectionInfos() {
+    private func prepareSectionInfos() {
+        
+        topArtistData = [0: [Artist](), 1: [Artist](), 2: [Artist]()]
         sectionInfos.append(SectionInfo(title: "THIS MONTH", isVisible: false))
         sectionInfos.append(SectionInfo(title: "THIS MONTH", isVisible: false))
         sectionInfos.append(SectionInfo(title: "THIS MONTH", isVisible: false))
@@ -57,7 +58,6 @@ extension TopArtistsViewModal: SpotifyWebAPIDelegate {
     func spotifyWebAPIDidRequestSuccess(data: Any, endpoint: Endpoint) {
         
         let jsonObject  = JSON(data)
-        
         
         if let topArtists = jsonObject["items"].array {
             for topArtist in topArtists {
