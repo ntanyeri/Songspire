@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import Firebase
+
 
 
 @UIApplicationMain
@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         checkSpotifySession()
         AppEngine.setUIElementsAppearances()
         
-        //NetworkActivityIndicatorManager.shared.isEnabled = true
         FirebaseApp.configure()
         
         return true
