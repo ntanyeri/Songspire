@@ -18,7 +18,7 @@ protocol SpotifyWebAPIDelegate {
 
 class Spotify {
     
-    let clientID    = "3d4d4df0a8454f128d72da5d0ca9aa48"
+    let clientID    = "YOUR_CLIENT_ID"
     let redirectURI = URL(string: "songspire://")!
     let sessionKey  = "spotifySessionKey"
     let appURL      = SPTAuth.defaultInstance().spotifyAppAuthenticationURL()!
