@@ -23,8 +23,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         initMusicPlayer()
-        prepareSpotifyPlayer()
-    }
+        prepareSpotifyPlayer()    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -34,7 +33,7 @@ class MainViewController: UIViewController {
 extension MainViewController {
     
     func initMusicPlayer() {
-        popupContentController = storyboard?.instantiateViewController(withIdentifier: "MusicPlayerViewController") as! MusicPlayerViewController
+        popupContentController = storyboard?.instantiateViewController(withIdentifier: "MusicPlayerViewController") as? MusicPlayerViewController
         popupContentController.delegate = self
     }
     

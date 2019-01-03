@@ -29,6 +29,7 @@ class TopArtistsViewController: UIViewController {
         
         createModal()
         tableViewRegisterCustomCells()
+        setupIntents()
 
     }
     
@@ -83,6 +84,26 @@ extension TopArtistsViewController {
         viewModal.getShortTermTopArtist()
         viewModal.getMediumTermTopArtist()
         viewModal.getLongTermTopArtist()
+    }
+    
+    func setupIntents() {
+        let activity = NSUserActivity(activityType: "com.ntanyeri.songspire.sayHi")
+        
+        activity.title                      = "Show Top Tracks"
+        activity.userInfo                   = ["speech" : "hi"]
+        activity.isEligibleForSearch        = true
+        activity.isEligibleForPrediction    = true
+        activity.persistentIdentifier       = NSUserActivityPersistentIdentifier("com.ntanyeri.songspire.sayHi")
+        view.userActivity = activity
+        activity.becomeCurrent()
+    }
+    
+    public func recieveShortcut() {
+        let alert = UIAlertController(title: "Hi There!", message: "I'll show your top tracks.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Show Me", style: .default, handler: { (alert) in
+            self.tabBarController?.selectedIndex = 1
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
