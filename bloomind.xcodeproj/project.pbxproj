@@ -114,7 +114,6 @@
 		64B1E79221DE813000C7F320 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B1E75D21DE812F00C7F320 /* TextField.swift */; };
 		64B1E79321DE813000C7F320 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B1E75E21DE812F00C7F320 /* Button.swift */; };
 		64B1E79621DE863B00C7F320 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B1E79521DE863B00C7F320 /* Intents.framework */; };
-		64DF809520788EEC00A8381A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64DF809420788EEC00A8381A /* GoogleService-Info.plist */; };
 		64E267E22032D20E00519AD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E267E12032D20E00519AD5 /* AppDelegate.swift */; };
 		64E267E72032D20E00519AD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64E267E52032D20E00519AD5 /* Main.storyboard */; };
 		64E267E92032D20E00519AD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64E267E82032D20E00519AD5 /* Assets.xcassets */; };
@@ -247,7 +246,6 @@
 		64B1E79421DE859400C7F320 /* bloomind.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = bloomind.entitlements; sourceTree = "<group>"; };
 		64B1E79521DE863B00C7F320 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		64B6FB2120B28B180003B33C /* NVActivityIndicatorViewAppExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorViewAppExtension.framework; path = Carthage/Build/iOS/NVActivityIndicatorViewAppExtension.framework; sourceTree = "<group>"; };
-		64DF809420788EEC00A8381A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		64E267DE2032D20E00519AD5 /* bloomind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bloomind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64E267E12032D20E00519AD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64E267E62032D20E00519AD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -303,7 +301,6 @@
 		641333B42037A2BA00060EB9 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				64DF809420788EEC00A8381A /* GoogleService-Info.plist */,
 				64E267ED2032D20E00519AD5 /* Info.plist */,
 				6469162E2032DFD500DEF8EE /* bloomind-Bridging-Header.h */,
 			);
@@ -896,7 +893,6 @@
 				64B1E77221DE813000C7F320 /* Countries.bundle in Resources */,
 				64AD095E2037BB7500130E23 /* SFDisplay-Ultralight.otf in Resources */,
 				64AD094E2037BB7500130E23 /* SFDisplay-Thin.otf in Resources */,
-				64DF809520788EEC00A8381A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
