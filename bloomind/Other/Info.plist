@@ -46,9 +46,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSContactsUsageDescription</key>
-	<string>Songspire doesn't use your contacts.</string>
+	<string>Songspire doesn&apos;t use your contacts.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Songspire doesn't use your photo library.</string>
+	<string>Songspire doesn&apos;t use your photo library.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SFDisplay-Black.otf</string>
@@ -88,6 +88,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSUserActivityTypes</key>
+	<string>com.ntanyeri.songspire.sayHi</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

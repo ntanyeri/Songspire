@@ -9,7 +9,6 @@
 import UIKit
 import DZNEmptyDataSet
 import SnapKit
-import VegaScroll
 
 class TopTracksViewController: MainViewController {
     

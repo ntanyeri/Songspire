@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import Firebase
+import netfox_ios
 
 
 @UIApplicationMain
@@ -22,8 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         checkSpotifySession()
         AppEngine.setUIElementsAppearances()
         
-        //NetworkActivityIndicatorManager.shared.isEnabled = true
-        FirebaseApp.configure()
+        NFX.sharedInstance().start()
         
         return true
     }
@@ -95,7 +94,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
-
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        guard let tabBarController          = window?.rootViewController as? UITabBarController else { return false }
+        guard let navigationController      = tabBarController.viewControllers?.first as? UINavigationController else { return false }
+        guard let topArtistsViewController  = navigationController.viewControllers.first as? TopArtistsViewController else { return false }
+        
+        topArtistsViewController.recieveShortcut()
+        return true
+    }
 }
 
